@@ -51,7 +51,7 @@ const Signup = () => {
         e.preventDefault();
         if (handleValidation()) {
             try {
-                const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
+                const response = await axios.post("https://paytm-basic-backend-brown.vercel.app/api/v1/user/signup", {
                     username, email, password
                 })
                 if (response.status === 201) {
