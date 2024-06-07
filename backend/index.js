@@ -6,7 +6,7 @@ const cors=require('cors')
 
 app.use(cors(
     {
-        origin:["https://paytm-basic-backend-brown.vercel.app"],
+        origin:[],
         methods:["POST","GET","PUT"],
         credentials:true,
     }
