@@ -41,7 +41,6 @@ const Signin = () => {
   async function handleClick(e) {
     e.preventDefault();
     if (handleValidation()) {
-      console.log('Validation passed');
       try {
         const response = await axios.post(`${baseUrl}/api/v1/user/signin`, {
           email, password
