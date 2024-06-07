@@ -4,6 +4,7 @@ import Balance from '../components/Balance'
 import Users from '../components/Users'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import {baseUrl} from '../url'
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0)
@@ -12,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/v1/account/balance", {
+        const response = await axios.get(`${baseUrl}/api/v1/account/balance`, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
           }
@@ -25,7 +26,7 @@ const Dashboard = () => {
     fetchData()
 
     const fetchUser = async () => {
-      const response = await axios.get("http://localhost:3000/api/v1/user/inuser", {
+      const response = await axios.get(`${baseUrl}/api/v1/user/inuser`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
