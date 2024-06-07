@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import {baseUrl} from '../url'
 
 
 const Signup = () => {
@@ -51,7 +51,7 @@ const Signup = () => {
         e.preventDefault();
         if (handleValidation()) {
             try {
-                const response = await axios.post("https://paytm-basic-backend-brown.vercel.app/api/v1/user/signup", {
+                const response = await axios.post(`${baseUrl}/api/v1/user/signup`, {
                     username, email, password
                 })
                 if (response.status === 201) {
