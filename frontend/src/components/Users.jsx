@@ -3,10 +3,11 @@ import Button from './Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import {baseUrl} from '../url';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const [filter, setFilter] = useState("F")
+    const [filter, setFilter] = useState("")
     const [loggedInUser, setLoggedInUser] = useState(null)
 
     const { isAuthenticated } = useAuth();
