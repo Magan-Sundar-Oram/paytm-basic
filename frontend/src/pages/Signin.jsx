@@ -38,70 +38,69 @@ const Signin = () => {
     return true;
   }
 
-  // async function handleClick(e) {
-  //   e.preventDefault();
-  //   if (handleValidation()) {
-  //     console.log('Validation passed');
-  //     try {
-  //       const response = await axios.post(`${baseUrl}/api/v1/user/signin`, {
-  //         email, password
-  //       })
-  //       console.log('Response received:', response);
-
-  //       if (response.status === 200) {
-  //         toast.success(response.data.message, {
-  //           onClose: () => { navigate('/dashboard') },
-  //           autoClose: 3000,
-  //         });
-
-  //         localStorage.setItem("token", response.data.token)
-  //         login(response.data.token);
-  //       }
-
-  //       if (response.status === 401) {
-  //         toast.error(response.data.message);
-  //       }
-  //     } catch (error) {
-  //       toast.error('An error occurred during the sign in. Please try again.');
-  //     }
-  //   }
-  // }
-  const handleClick = async (e) => {
+  async function handleClick(e) {
     e.preventDefault();
     if (handleValidation()) {
+      console.log('Validation passed');
       try {
-        const response = await fetch(`${baseUrl}/api/v1/user/signin`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ email, password })
-        });
+        const response = await axios.post(`${baseUrl}/api/v1/user/signin`, {
+          email, password
+        })
 
-        const data = await response.json();
+        if (response.status === 200) {
+          toast.success(response.data.message, {
+            onClose: () => { navigate('/dashboard') },
+            autoClose: 3000,
+          });
 
-        if (!response.ok) {
-          if (response.status === 401) {
-            toast.error(data.message);
-          } else {
-            throw new Error('Network response was not ok');
-          }
-        } else {
-          if (response.status === 200) {
-            toast.success('Static test message'); // Simplified toast for testing
-            toast.success(data.message || 'Sign-in successful!', {
-              onClose: () =>  navigate('/dashboard') });
-            localStorage.setItem("token", data.token);
-            login(data.token);
-          }
+          localStorage.setItem("token", response.data.token)
+          login(response.data.token);
+        }
+
+        if (response.status === 401 || response.status===411) {
+          toast.error(response.data.message);
         }
       } catch (error) {
         toast.error('An error occurred during the sign in. Please try again.');
       }
-    } else {
-      toast.error('Validation failed')
     }
-  };
+  }
+  // const handleClick = async (e) => {
+  //   e.preventDefault();
+  //   if (handleValidation()) {
+  //     try {
+  //       const response = await fetch(`${baseUrl}/api/v1/user/signin`, {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json"
+  //         },
+  //         body: JSON.stringify({ email, password })
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (!response.ok) {
+  //         if (response.status === 401 || response.status===411) {
+  //           toast.error(data.message);
+  //         } else {
+  //           throw new Error('Network response was not ok');
+  //         }
+  //       } else {
+  //         if (response.status === 200) {
+  //           toast.success('Static test message'); // Simplified toast for testing
+  //           toast.success(data.message || 'Sign-in successful!', {
+  //             onClose: () =>  navigate('/dashboard') });
+  //           localStorage.setItem("token", data.token);
+  //           login(data.token);
+  //         }
+  //       }
+  //     } catch (error) {
+  //       toast.error('An error occurred during the sign in. Please try again.');
+  //     }
+  //   } else {
+  //     toast.error('Validation failed')
+  //   }
+  // };
 
 
 
