@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../context/AuthContext';
+import {baseUrl} from '../url'
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ const Signin = () => {
   //   if (handleValidation()) {
   //     console.log('Validation passed');
   //     try {
-  //       const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
+  //       const response = await axios.post(`${baseUrl}/api/v1/user/signin`, {
   //         email, password
   //       })
   //       console.log('Response received:', response);
@@ -69,7 +70,7 @@ const Signin = () => {
     e.preventDefault();
     if (handleValidation()) {
       try {
-        const response = await fetch("http://localhost:3000/api/v1/user/signin", {
+        const response = await fetch(`${baseUrl}/api/v1/user/signin`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
