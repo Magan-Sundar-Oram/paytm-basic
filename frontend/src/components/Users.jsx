@@ -14,7 +14,7 @@ const Users = () => {
     useEffect(() => {
         const fetchLoggedInUser = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/v1/user/inuser", {
+                const response = await axios.get(`${baseUrl}/api/v1/user/inuser`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
                 setLoggedInUser(response.data.userData);
@@ -32,7 +32,7 @@ const Users = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter);
+                const response = await axios.get(`${baseUrl}/api/v1/user/bulk?filter=${filter}`);
                 setUsers(response.data.users)
             } catch (error) {
                 console.log("Error while fetching data" + error)
