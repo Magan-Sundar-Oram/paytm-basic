@@ -9,13 +9,15 @@ import Appbar from '../components/Appbar';
 import UpdateProfileSection from '../components/UpdateProfileSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSyncAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-    const { login } = useAuth();
+    const { logout } = useAuth(); // Assuming there's a logout function in your AuthContext
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [balance, setBalance] = useState(null);
     const [showUpdateSection, setShowUpdateSection] = useState(false);
+    const navigate = useNavigate();
 
     const fetchUserData = async () => {
         try {
@@ -64,19 +66,17 @@ const Profile = () => {
                 const response = await axios.delete(`${baseUrl}/api/v1/user/delete-user`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
                 });
-                if (response.data.status === 200) {
+                if (response.status === 200) {
+                    localStorage.removeItem('token');
                     toast.success(response.data.message, {
-                        onClose: () => { navigate('/') },
+                        onClose: () => { logout() },
                         autoClose: 2000,
-                    })
-                }
 
+                    });
+                }
             } catch (error) {
                 console.error('Error deleting user account:', error);
-                toast.error(response.data.message, {
-                    onClose: () => { navigate('/dashboard') },
-                    autoClose: 2000,
-                })
+                toast.error('Error deleting user account. Please try again.');
             }
         }
     };
