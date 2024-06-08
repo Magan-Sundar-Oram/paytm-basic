@@ -7,18 +7,26 @@ export default {
   theme: {
     extend: {
       animation: {
-        'spin-slow': 'spin 2s linear infinite',
-        'spin-medium': 'spin 1.5s linear infinite',
-        'spin-fast': 'spin 1s linear infinite',
+        'border-move': 'border-move 1s linear infinite', // Define the border move animation
       },
       keyframes: {
-        spin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        }
-      }
+        'border-move': {
+          '0%': { 
+            borderWidth: '0px', 
+            borderColor: 'transparent',
+          },
+          '50%': {
+            borderWidth: '3.5px', 
+            borderColor: 'blue',
+          },
+          '100%': { 
+            borderWidth: '0px', 
+            borderColor: 'transparent',
+          },
+        },
+      },
+     
     },
   },
   plugins: [],
 }
-

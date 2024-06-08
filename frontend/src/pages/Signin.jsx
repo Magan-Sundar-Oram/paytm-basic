@@ -71,6 +71,7 @@ const Signin = () => {
           }
         }
       } catch (error) {
+        toast.error(data.message)
         toast.error('An error occurred during the sign in. Please try again.');
       } finally {
         setLoading(false);
