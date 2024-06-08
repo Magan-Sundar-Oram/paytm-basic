@@ -15,20 +15,20 @@ const Appbar = ({ username }) => {
     var firstName = username.split(" ")[0]
   }
   return (
-    <div className='shadow h-14 flex justify-around  bg-white'>
+    <div className='shadow h-20 items-center flex justify-around  bg-white'>
       <div className='flex flex-col text-xl justify-center h-full ml-4'>
         PayTM App
       </div>
-      <div className='flex'>
-        <div className='flex flex-col justify-center h-full mr-4'>
+      <div className='flex items-center gap-2'>
+        {/* <div className='flex text-2xl flex-col justify-center h-full mr-4'>
           Hello
-        </div>
-        <div className='rounded-full w-12 h-12 bg-slate-200 flex justify-center mt-1 mr-2 '>
-          <div className='flex flex-col justify-center h-full text-xl'>
+        </div> */}
+        <div className='rounded-md py-2 px-4 capitalize  bg-slate-200 flex justify-center mr-2 '>
+          <div className='flex flex-col justify-center h-full font-bold'>
             {firstName}
           </div>
         </div>
-        <button onClick={handleLogout}>Logout</button>
+        <button className='bg-slate-800 hover:bg-gray-900 py-2 px-4  rounded-md text-white' onClick={handleLogout}>Logout</button>
       </div>
     </div>
   )

@@ -17,13 +17,13 @@ export const AuthProvider = ({ children }) => {
   const login = (token) => {
     localStorage.setItem('token', token);
     setIsAuthenticated(true);
-    // navigate('/dashboard');
+    
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setIsAuthenticated(false);
-    // navigate('/login');
+  
   };
 
   return (

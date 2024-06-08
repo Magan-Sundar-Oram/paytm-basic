@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { baseUrl } from '../url';
 
 const SendMoney = () => {
 
@@ -25,7 +26,7 @@ const SendMoney = () => {
 
     try {
 
-      const response = await axios.post("http://localhost:3000/api/v1/account/transfer", {
+      const response = await axios.post(`${baseUrl}/api/v1/account/transfer`, {
         to: id,
         amount: Number(amount)
       }, {
