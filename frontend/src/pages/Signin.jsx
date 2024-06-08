@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../context/AuthContext';
-import {baseUrl} from '../url'
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -41,10 +40,12 @@ const Signin = () => {
   // async function handleClick(e) {
   //   e.preventDefault();
   //   if (handleValidation()) {
+  //     console.log('Validation passed');
   //     try {
-  //       const response = await axios.post(`${baseUrl}/api/v1/user/signin`, {
+  //       const response = await axios.post("http://localhost:3000/api/v1/user/signin", {
   //         email, password
   //       })
+  //       console.log('Response received:', response);
 
   //       if (response.status === 200) {
   //         toast.success(response.data.message, {
@@ -56,7 +57,7 @@ const Signin = () => {
   //         login(response.data.token);
   //       }
 
-  //       if (response.status === 401 || response.status===411) {
+  //       if (response.status === 401) {
   //         toast.error(response.data.message);
   //       }
   //     } catch (error) {
@@ -64,12 +65,11 @@ const Signin = () => {
   //     }
   //   }
   // }
-  
   const handleClick = async (e) => {
     e.preventDefault();
     if (handleValidation()) {
       try {
-        const response = await fetch(`${baseUrl}/api/v1/user/signin`, {
+        const response = await fetch("http://localhost:3000/api/v1/user/signin", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -80,7 +80,7 @@ const Signin = () => {
         const data = await response.json();
 
         if (!response.ok) {
-          if (response.status === 401 || response.status===411) {
+          if (response.status === 401) {
             toast.error(data.message);
           } else {
             throw new Error('Network response was not ok');
@@ -120,7 +120,7 @@ const Signin = () => {
         transition:Bounce
       />
       <div className='flex flex-col justify-center'>
-        <div className='rounded-lg bg-white w-80 text-center p-2 h-max px-4'>
+        <div className='md:w-full rounded-lg bg-white w-80 text-center p-2 h-max px-4'>
           <Heading label={"Sign in"} />
           <SubHeading label={"Enter your credentials to access your account"} />
 
