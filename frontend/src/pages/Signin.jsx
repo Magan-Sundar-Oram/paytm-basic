@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../context/AuthContext';
+import { baseUrl } from '../url';
+import Loader from '../components/Loader';
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -59,7 +61,6 @@ const Signin = () => {
           }
         } else {
           if (response.status === 200) {
-            toast.success('Static test message'); // Simplified toast for testing
             toast.success(data.message || 'Sign-in successful!', {
               onClose: () => {
                 navigate('/dashboard');
@@ -67,7 +68,7 @@ const Signin = () => {
             });
             localStorage.setItem("token", data.token);
             login(data.token);
-          // }
+          }
         }
       } catch (error) {
         toast.error('An error occurred during the sign in. Please try again.');
@@ -93,27 +94,26 @@ const Signin = () => {
         pauseOnHover
         theme="dark"
       />
-      <div className='flex flex-col justify-center'>
-        <div className='rounded-lg bg-white w-80 text-center p-2 h-max px-4'>
-          <Heading label={"Sign in"} />
-          <SubHeading label={"Enter your credentials to access your account"} />
-
-          <InputBox onChange={(e) => { setEmail(e.target.value) }}
-            placeholder={"example123@gmail.com"} label={"Email"} />
-
-          <InputBox onChange={(e) => { setPassword(e.target.value) }}
-            placeholder={"******"} label={"Password"} />
-
-          <div className='pt-4'>
-            <Button onClick={handleClick} label={"Sign in"} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className='flex flex-col justify-center'>
+          <div className='md:w-full rounded-lg bg-white w-80 text-center p-2 h-max px-4'>
+            <Heading label={"Sign in"} />
+            <SubHeading label={"Enter your credentials to access your account"} />
+            <InputBox onChange={(e) => { setEmail(e.target.value) }}
+              placeholder={"example123@gmail.com"} label={"Email"} />
+            <InputBox onChange={(e) => { setPassword(e.target.value) }}
+              placeholder={"******"} label={"Password"} />
+            <div className='pt-4'>
+              <Button onClick={handleClick} label={"Sign in"} />
+            </div>
+            <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"} />
           </div>
-          <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"} />
         </div>
-
-      </div>
-
+      )}
     </div>
   );
 };
 
-export default Signin
+export default Signin;

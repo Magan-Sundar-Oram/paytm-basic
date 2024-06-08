@@ -14,8 +14,8 @@ const AuthCheck = ({ children }) => {
 
 }
 
-function App() {
 
+function App() {
   return (
 
     <AuthProvider>
