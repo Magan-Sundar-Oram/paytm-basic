@@ -2,6 +2,8 @@
 
 Paytm Basic is a simple MERN (MongoDB, Express, React, Node.js) application that allows users to sign up, sign in, view their profile, update their information delete account. This app includes features for sending money to other users.
 
+### hosted on vercel ➡️  [Paytm-Basic](https://paytm-basic-v1.vercel.app)
+
 ## Features
 
 - **User Authentication**: Sign up, sign in,with validation so that no invalid goes to database.
@@ -30,7 +32,7 @@ Paytm Basic is a simple MERN (MongoDB, Express, React, Node.js) application that
   - bcrypt.js: Library for hashing passwords to ensure user data security.
 
 ## Getting Started
-#### hosted on vercel➡️ [Paytm-Basic](https://paytm-basic-v1.vercel.app)
+
 
 ### Prerequisites
 
