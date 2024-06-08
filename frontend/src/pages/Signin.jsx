@@ -97,8 +97,8 @@ const Signin = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className='flex flex-col justify-center'>
-          <div className='md:w-full rounded-lg bg-white w-80 text-center p-2 h-max px-4'>
+        <div className='flex flex-col justify-normal'>
+          <div className='md:w-full rounded-lg bg-white w-[100%] text-center p-2 h-max px-4'>
             <Heading label={"Sign in"} />
             <SubHeading label={"Enter your credentials to access your account"} />
             <InputBox onChange={(e) => { setEmail(e.target.value) }}

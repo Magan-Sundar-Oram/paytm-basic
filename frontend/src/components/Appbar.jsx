@@ -23,10 +23,13 @@ const Appbar = ({ username }) => {
         {/* <div className='flex text-2xl flex-col justify-center h-full mr-4'>
           Hello
         </div> */}
-        <div className='rounded-md py-2 px-4 capitalize  bg-slate-200 flex justify-center mr-2 '>
-          <div className='flex flex-col justify-center h-full font-bold'>
+        <div className='rounded-md py-2 px-4 capitalize hover:bg-slate-400 bg-slate-200 flex justify-center mr-2 '>
+          <button onClick={() => {
+            navigate('/profile')
+          }} className=' flex flex-col capitalize justify-center h-full font-bold'>
             {firstName}
-          </div>
+          </button>
+
         </div>
         <button className='bg-slate-800 hover:bg-gray-900 py-2 px-4  rounded-md text-white' onClick={handleLogout}>Logout</button>
       </div>

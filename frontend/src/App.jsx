@@ -3,6 +3,7 @@ import Signup from './pages/Signup';
 import Signin from './pages/Signin';
 import Dashboard from './pages/Dashboard'
 import SendMoney from './pages/SendMoney';
+import Profile from './pages/Profile';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
 import { Navigate } from 'react-router-dom';
@@ -32,6 +33,11 @@ function App() {
           <Route path='/sendmoney'
             element={<PrivateRoute>
               <SendMoney />
+            </PrivateRoute>} />
+
+          <Route path="/profile"
+            element={<PrivateRoute>
+              <Profile />
             </PrivateRoute>} />
 
           <Route path="*" element={<Navigate to="/signin" />} />
