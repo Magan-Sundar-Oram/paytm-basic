@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {baseUrl} from '../url'
+import { baseUrl } from '../url'
 
 
 const Signup = () => {
@@ -51,7 +51,7 @@ const Signup = () => {
         e.preventDefault();
         if (handleValidation()) {
             try {
-                const response = await axios.post(`${baseUrl}/api/v1/user/signup`, {
+                const response = await axios.post("http://localhost:3000/api/v1/user/signup", {
                     username, email, password
                 })
                 if (response.status === 201) {
@@ -83,7 +83,7 @@ const Signup = () => {
                 transition:Bounce
             />
             <div className='flex justify-normal flex-col'>
-                <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
+                <div className="md:w-full rounded-lg bg-white w-85 text-center p-2 h-max px-4">
                     <Heading label={"Sign up"} />
                     <SubHeading label={"Enter your information to create an account"} />
                     <InputBox onChange={(e) => { setUsername(e.target.value) }}
