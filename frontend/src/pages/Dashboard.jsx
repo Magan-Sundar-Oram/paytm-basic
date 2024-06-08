@@ -4,7 +4,7 @@ import Balance from '../components/Balance'
 import Users from '../components/Users'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import {baseUrl} from '../url'
+import UserInfo from '../components/UserInfo'
 
 const Dashboard = () => {
   const [balance, setBalance] = useState(0)
@@ -13,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/v1/account/balance`, {
+        const response = await axios.get("http://localhost:3000/api/v1/account/balance", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
           }
@@ -26,7 +26,7 @@ const Dashboard = () => {
     fetchData()
 
     const fetchUser = async () => {
-      const response = await axios.get(`${baseUrl}/api/v1/user/inuser`, {
+      const response = await axios.get("http://localhost:3000/api/v1/user/inuser", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
@@ -39,10 +39,14 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Appbar username={inuser.username}/>
+
+      <Appbar username={inuser.username} />
       <div className=' mt-8 flex w-screen h-screen justify-center'>
-        <div className='w-2/5 bg-white p-5 rounded-md'>
-          <Balance value={balance} />
+        <div className='md:w-3/5 lg:w-2/5 w-11/12 bg-white p-5 rounded-md'>
+          <div className='shadow-md py-5 px-3 rounded-md'>
+            <UserInfo username={inuser.username} />
+            <Balance value={balance} />
+          </div>
           <Users />
         </div>
       </div>
