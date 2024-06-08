@@ -88,7 +88,7 @@ const Signin = () => {
           }
         } else {
           if (response.status === 200) {
-            toast.success('Static test message'); // Simplified toast for testing
+            // toast.success('Static test message'); // Simplified toast for testing
             toast.success(data.message || 'Sign-in successful!', {
               onClose: () =>  navigate('/dashboard') });
             localStorage.setItem("token", data.token);
