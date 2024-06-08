@@ -87,13 +87,13 @@ const Signin = () => {
             throw new Error('Network response was not ok');
           }
         } else {
-          if (response.status === 200) {
+          // if (response.status === 200) {
             // toast.success('Static test message'); // Simplified toast for testing
             toast.success(data.message || 'Sign-in successful!', {
               onClose: () =>  navigate('/dashboard') });
             localStorage.setItem("token", data.token);
             login(data.token);
-          }
+          // }
         }
       } catch (error) {
         toast.error('An error occurred during the sign in. Please try again.');
