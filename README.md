@@ -30,7 +30,7 @@ Paytm Basic is a simple MERN (MongoDB, Express, React, Node.js) application that
   - bcrypt.js: Library for hashing passwords to ensure user data security.
 
 ## Getting Started
-### hosted on vercel [Paytm-Basic](https://paytm-basic-v1.vercel.app)
+#### hosted on vercel➡️ [Paytm-Basic](https://paytm-basic-v1.vercel.app)
 
 ### Prerequisites
 
