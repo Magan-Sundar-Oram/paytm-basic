@@ -4,7 +4,13 @@ const rootRouter = require('./routes/index');
 const bodyParser=require('body-parser');
 const cors=require('cors')
 
-app.use(cors());
+app.use(cors(
+    {
+        origin: 'https://paytm-basic-v1.vercel.app',
+        methods:["POST","GET","PUT"],
+        credentials:true,
+    }
+));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.json());

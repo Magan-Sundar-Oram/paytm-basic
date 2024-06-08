@@ -170,6 +170,7 @@ router.put('/update', authMiddleware, async (req, res) => {
 router.get('/bulk', async (req, res) => {
 
     const filter = req.query.filter;
+    console.log(filter)
 
     try {
         const users = await User.find({
