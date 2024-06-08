@@ -6,7 +6,8 @@ const { User, Account } = require('../db');
 const zod = require('zod')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('../config');
+require('dotenv').config();
+const JWT_SECRET = process.env.JWT_SECRET;
 const authMiddleware = require("../middleware/middleware");
 
 router.get('/', (req, res) => {
