@@ -17,7 +17,7 @@ const Appbar = ({ username }) => {
   return (
     <div className='shadow h-20 items-center flex justify-around  bg-white'>
       <div className='flex flex-col text-xl justify-center h-full ml-4'>
-        PayTM App
+         <button onClick={()=>{navigate('/dashboard')}}>PayTM App</button>
       </div>
       <div className='flex items-center gap-2'>
         {/* <div className='flex text-2xl flex-col justify-center h-full mr-4'>
