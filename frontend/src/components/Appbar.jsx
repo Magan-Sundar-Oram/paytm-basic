@@ -37,7 +37,7 @@ const Appbar = ({ username }) => {
           <button onClick={() => {
             navigate('/profile')
           }} className='flex flex-col tracking-wider capitalize justify-center  h-full font-bold z-10'>
-            {`${firstName}+ :PROFILE`} 
+            {`${firstName}'s PROFILE`} 
           </button>
         </div>
         <button className='bg-slate-800 hover:bg-gray-900 py-2 px-4  rounded-md text-white' onClick={handleLogout}>Logout</button>
